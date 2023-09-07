@@ -1,0 +1,107 @@
+number,question
+Q45,"The goal of this survey is to understand general attitudes and habits surrounding data archiving and sharing across different biological fields. 
+
+ 
+
+The target demographic for this survey is researchers as well as other individuals that could be considered either scientific data producers or consumers of data for scientific activities.  We are also interested in understanding to what degree the potential benefit for broader impacts and outreach motivates (or could motivate) data sharing.
+
+ 
+This survey is anonymous and will be used in a descriptive publication that we hope will help journals, funding agencies, and scholarly professional societies in their efforts improve their support and incentives for ethical data transparency and accessibility."
+Q1,"Research Participant   Informed Consent Form
+
+Please read this document carefully before you decide to participate in this research study. Your participation is voluntary, and you can decline to participate, or withdraw consent at any time, with no consequences.
+
+ 
+
+Study Title: Data sharing survey
+
+ 
+
+Person conducting the research: Connie J. Mulligan, PhD, Department of Anthropology, University of Florida, Gainesville FL, 32610, 352-275-3256, cmulligan@ufl.edu. This survey was approved as exempt from review by UF's IRB. If you have any questions about the study, please contact Dr. Mulligan or IRB01 (352-392-0433, irb2@ufl.edu)
+
+ 
+
+Purpose of the research study: The purpose of this study is to learn more about the attitudes, practices, and experiences of data archiving and sharing among biological anthropologists.
+
+ 
+
+What you will be asked to do in the study: You will be asked to fill out an online survey that should take approximately 10-15 minutes. The survey is anonymous and it will not be possible to connect any of the data collected with specific study participants. There is a minimal risk that security of any online data may be compromised, but our survey host (QUALTRICS) uses strong encryption and other data security methods to protect your information. Data will be presented in publications and/or meeting presentations or reports.
+
+ 
+
+Risks and benefits: There are no risks or discomforts anticipated due to participation in this study. There are no direct benefits of participation for you."
+Q16,"Through which society, listserv or website did you access this survey? (choose one or more) - Selected Choice"
+Q16_19_TEXT,"Through which society, listserv or website did you access this survey? (choose one or more) - other (write in) - Text"
+Q2,What is your field of expertise? (choose one or more) - Selected Choice
+Q2_16_TEXT,What is your field of expertise? (choose one or more) - other (write in) - Text
+Q3,What is your career stage or occupation? - Selected Choice
+Q3_13_TEXT,What is your career stage or occupation? - other (write in) - Text
+Q6,Do identify as a member of a under-represented group or marginalized group? (optional)
+Q7,What aspects of your identity affiliate you with an under-represented or marginalized group? (optional) - Selected Choice
+Q7_6_TEXT,What aspects of your identity affiliate you with an under-represented or marginalized group? (optional) - other (write in) - Text
+Q8,"Do at least one of the primary journals used by researchers in your field have a data accessibility requirement?  In other words, does at least one require provision of data and/or data identifiers required to repeat the study or a statement of how the required data can be obtained?"
+Q9,Do you publish in these journals - Selected Choice
+Q9_2_TEXT,Do you publish in these journals - no (provide an explanation of why not if you desire) - Text
+Q10,Have you benefited from other researchers sharing their data?
+Q11,How did you benefit? (choose one or more) - Selected Choice
+Q11_6_TEXT,How did you benefit? (choose one or more) - other (write in) - Text
+Q12,How did you get access to shared data? (choose one or more) - Selected Choice
+Q12_1_TEXT,How did you get access to shared data? (choose one or more) - online repository (please write in names of repositories you have downloaded data from) - Text
+Q12_3_TEXT,How did you get access to shared data? (choose one or more) - other (write in) - Text
+Q13,"In your opinion, why have you been unable to benefit from data sharing by others? (choose one or more) - Selected Choice"
+Q13_5_TEXT,"In your opinion, why have you been unable to benefit from data sharing by others? (choose one or more) - e. Other (write in) - Text"
+Q14,Have you archived and/or shared data using an online repository before?
+Q15,Please list all the online repositories you have used to archive or share your data (you can write names of multiple repositories in the space below)
+Q17,What was your motivation to archive and share data? (choose one or more) - Selected Choice
+Q17_9_TEXT,What was your motivation to archive and share data? (choose one or more) - other (write in) - Text
+Q18,What benefits have you experienced from sharing your own data? (choose one or more) - Selected Choice
+Q18_8_TEXT,What benefits have you experienced from sharing your own data? (choose one or more) - other (write in) - Text
+Q19,Have you ever experienced any kind of negative consequences of data archiving/sharing?
+Q20,What negative consequences did you experience? (choose one or more) - Selected Choice
+Q20_7_TEXT,What negative consequences did you experience? (choose one or more) - other (write in) - Text
+Q21,Why have you never archived/shared your data? (choose one or more) - Selected Choice
+Q21_12_TEXT,Why have you never archived/shared your data? (choose one or more) - other (write in) - Text
+Q22,Have you ever chosen not to archive/share a particular set of data from any of your published studies?
+Q23,What was your reason for choosing not to archive/share in this/these instance(s)? (choose one or more) - Selected Choice
+Q23_10_TEXT,What was your reason for choosing not to archive/share in this/these instance(s)? (choose one or more) - other (write in) - Text
+Q48,"Optional: We are extremely interested in personal ""success"" stories of how shared data helped you or how sharing your own data lead to a possibly unexpected positive outcome for you or others."
+Q43,Optional: What challenges have limited your data sharing or archiving in the past? What would help you (and/or others) archive and shared data more effectively in the future?
+Q24,"Do you agree with the following statement? ""Scientists will experience a career-boosting net benefit by openly sharing their own data whenever possible"""
+Q25_1,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - Early career scientists
+Q25_2,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - Mid-career scientists
+Q25_3,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - Senior scientists
+Q25_4,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - Scientists representing privileged groups
+Q25_5,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - Scientists representing under-represented or marginalized groups
+Q25_6,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - Scientists in first world countries
+Q25_7,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - Scientists in developing countries
+Q25_8,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - other (write in)
+Q25_8_TEXT,Which scientists are UNLIKELY to experience a net benefit from sharing their own data? Which scientists are LIKELY to experience a net benefit. - other (write in) - Text
+Q30_1,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - Early career scientists"
+Q30_2,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - Mid-career scientists"
+Q30_3,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - Senior scientists"
+Q30_4,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - Scientists representing privileged groups"
+Q30_5,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - Scientists representing under-represented or marginalized groups"
+Q30_6,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - Scientists in first world countries"
+Q30_7,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - Scientists in developing countries"
+Q30_8,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - other (write in)"
+Q30_8_TEXT,"For each group, indicate whether you believe they will experience a strong career benefit from access to data shared by others, medium benefit, or little to no benefit. - other (write in) - Text"
+Q31_1,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - Early career scientists"
+Q31_2,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - Mid-career scientists"
+Q31_3,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - Senior scientists"
+Q31_4,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - Scientists representing privileged groups"
+Q31_5,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - Scientists representing under-represented or marginalized groups"
+Q31_6,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - Scientists in first world countries"
+Q31_7,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - Scientists in developing countries"
+Q31_8,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - other (write in)"
+Q31_8_TEXT,"For each group, indicate whether you believe they have a large obligation to share their own data, a medium obligation or little to no obligation. - other (write in) - Text"
+Q32,Professional incentives for data sharing are increasing and will fuel more ubiquitous and meaningful data sharing as time goes on
+Q33,Better data sharing/transparency will help to democratize the ability of all scientists to contribute to scientific advances
+Q34,Better data sharing/transparency will help advance scientific knowledge more rapidly and efficiently than would otherwise be possible
+Q35,"Stricter policies for data sharing must be enforced at all scholarly institutions, from journals to professional societies to universities to funding agencies."
+Q42,"Journals and funding agencies should adopt stricter criteria that authors and researchers must meet to gain exceptions to data sharing requirements.(For instance, providing a letter from a museum stating that measurements/imagery cannot be archived or shared.)"
+Q36,"The concerns of all stakeholders (first authors, collaborators, thesis advisors, museums, descendant populations) about sharing a given dataset should be considered and respected."
+Q37,There needs to be more flexibility in data sharing requirements by open access journals due to ethical considerations of some datasets.
+Q38,The push for open access sharing of data is too strong and may lead to wide scale misuse of shared data.
+Q39,It is important to archive data using professional platforms even when there are restrictions on sharing in order to allow future verification of a study’s results.
+Q40,There are online repositories that allow data archiving without overly strict requirements for subsequent data sharing.
+Q41,"When appropriate repositories are available, all individuals should archive their data in potentially accessible ways regardless of career stage."

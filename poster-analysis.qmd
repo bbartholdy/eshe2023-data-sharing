@@ -1,0 +1,489 @@
+---
+title: Open data in Paleoanthropology
+execute: 
+  warning: false
+  freeze: auto
+knitr: 
+  opts_chunk: 
+    message: false
+format: 
+  html: 
+    toc: true
+    code-fold: true
+    keep-md: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(readr)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(ggplot2)
+library(patchwork)
+paleoanth_responses <- read_csv("data/paleoanth-clean.csv")
+survey_questions <- read_csv("data/survey-questions.csv")
+
+#and pivot longer
+paleoanth_long <- paleoanth_responses |>
+  pivot_longer(cols = Q45:Q41, names_to = "question", values_to = "response")
+
+knitr::opts_chunk$set(fig.path = "figures/")
+# set theme for plots to match poster text
+```
+
+## Key takeaway
+
+Many of the perceived negatives of data sharing can be solved by implementing FAIR
+principles when sharing/publishing data.
+
+Overall, the outcome of the survey suggests that the positives of sharing data
+outweigh negatives.
+
+## Data source
+
+The data used in this analysis was generated in another study by Mulligan and
+colleagues (2022) and made available under a CC0 license.
+It was downloaded directly from the public repository (DRYAD): https://doi.org/10.5061/dryad.5x69p8d40
+
+```{r}
+#| label: download-data
+#| eval: false
+#| code-fold: show
+read_csv("https://datadryad.org/stash/downloads/file_stream/1034350")
+```
+
+```{r}
+#| label: tbl-survey-questions
+#| tbl-cap: "Questions asked in the survey."
+survey_questions |>
+  filter(number != "Q45", 
+         number != "Q1",
+         str_detect(number, "TEXT", negate = T)) |> # remove consent questions
+  knitr::kable()
+```
+
+## Data sharing
+
+Data sharing, archiving, and publishing are terms that are often used interchangeably,
+but they describe three distinct practices. We consider sharing to be
+the transfer of data between researchers, e.g. collaborators. Archiving is storing
+the data in a trusted long-term storage location after a project is completed.
+Publishing is making the data available on a trusted repository. In the survey,
+these were not distinguished, so for the analysis, we we will also use them
+interchangeably.
+
+`r (122 / (122 + 29)) * 100`% of respondents benefited from others sharing data
+with them.
+
+> `r survey_questions$number[15]`: `r survey_questions$question[15]`
+
+```{r}
+#| label: tbl-benefit-from
+#| tbl-cap: "Answers to the question 'Have you benefited from other researchers sharing their data? (single choice)"
+paleoanth_long |>
+  filter(question == "Q10") |>
+  count(response) |>
+  knitr::kable()
+```
+
+
+## FAIR data principles
+
+<!-- Image: https://book.fosteropenscience.eu/ -->
+![The Turing Way Community. This illustration is created by Scriberia with The Turing Way community, used under a CC-BY 4.0 licence. DOI: 10.5281/zenodo.3332807](img/FAIRPrinciples.jpg)
+
+FAIR $\neq$ Open
+
+The FAIR principles were developed as guiding principles for resonsible research
+data management and stewardship, and are not synonymous with the data being open.
+
+- F = Findable
+- A = Accessible
+- I = Interoperable
+- R = Reusable
+
+Can the data be found and is their findability ensured for the future? This
+involves a persistent identifier (e.g., DOI) and searchable metadata (F).
+Can the data be accessed via open, standardised protocols (A)?
+Can another researcher in a similar field incorporate the data into their workflow,
+and will they understand the format and terminology? Can they even open the file
+without purchasing software (I)? Is it clear how the data are meant and allowed
+to be re-used? Data should be accompanied by detailed documentation and a
+license (R).
+
+### Prevent data loss
+
+If data are stored/archived on institutional accounts or, worse, personal computers,
+there is an increased risk of data loss. Even if the data can be located,
+if the researcher who collected and analysed the data is no longer accessible,
+and the data and methodology were poorly documented, this may also result in data
+loss..
+
+## Repositories
+
+`r (87 / (60 + 87)) * 100`% of respondents have previously published data in a repository.
+
+```{r}
+repos <- paleoanth_long |>
+  filter(question == "Q15")
+```
+
+> `r survey_questions$number[23]`: `r survey_questions$question[23]`
+
+```{r}
+#| label: tbl-repo
+#| tbl-cap: "Answers to the question "Have you archived and/or shared data using an online repository before? (single choice)"
+paleoanth_long |>
+  filter(question == "Q14") |>
+  count(response) |>
+  knitr::kable()
+```
+
+
+> `r survey_questions$number[24]`: `r survey_questions$question[24]`
+
+The top repositories include MorphoSource, DRYAD, Zenodo, and journal supplementary
+materials (@fig-top-repositories).
+
+```{r}
+#| label: fig-top-repositories
+repos |>
+  separate_longer_delim(response, delim = ";") |>
+  count(response) |>
+  arrange(desc(n)) |>
+  slice_head(n = 8) |>
+#repos_summ |>
+  remove_missing() |>
+  ggplot(aes(x = reorder(response, -n), y = n, fill = response)) +
+  geom_col() +
+  theme_minimal() +
+  theme_get() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+> `r survey_questions$number[18]`: `r survey_questions$question[18]`
+
+```{r}
+#| label: tbl-data-access
+#| tbl-cap: "How respondents have obtained access to shared data. Multiple choices were allowed."
+# how did you get access to shared data?
+  # Q12_1_TEXT (write-in repositories where they downloaded data)
+paleoanth_long |>
+  filter(question == "Q12") |>
+  separate_longer_delim(response, delim = ",") |>
+  remove_missing() |>
+  count(response) |>
+  knitr::kable()
+```
+
+::: {.callout-warning}
+The biggest problem with sending data to other researchers---by, for
+example, email---is that there are often no (clear) terms of re-use (e.g. a license).
+:::
+
+### Trusted/certified repositories
+
+Things to look for in a trusted repository:
+
+- certification (e.g. CoreTrustSeal)
+- must assign a persistent identifier (PID)
+- uses an appropriate metadata scheme
+- provides appropriate license options (e.g. creative commons)
+- [OPTIONAL] access restriction options
+
+:::: {.columns}
+::: {.column}
+**Good**
+
+- Zenodo
+- DRYAD
+- The Digital Archaeological Record (tDAR)*
+- NCBI/ENA (no persistent identifiers)
+- Protein data bank (e.g. UniProt)
+- IsoArcH
+- MorphoSource
+
+:::
+::: {.column}
+**Bad**
+
+- GitHub**
+- Academia.edu
+- ResearchGate
+- Personal/lab website
+- Journal supplementary material (as PDF)
+
+:::
+::::
+
+For a more complete overview, see [re3data](https://re3data.org).
+
+
+[*CoreTrustSeal certified]{.aside}
+
+[**A GitHub repository can often be linked to a trusted repository to create a persistent identifier and a snapshot of the repository that can be archived and published.]{.aside}
+
+::: {.callout-tip}
+## Tip
+
+The items on the **Bad** list can of course be used in conjunction with a trusted
+repository to ensure maximum impact.
+:::
+
+### Access options
+
+Being accessible is not synonymous with being open. It just means that there
+are clear policies on access to the data. 'Available upon (reasonable) request'
+is not a clear policy on access. Most certified repositories provide the following
+access options:
+
+- Open
+- Embargo
+- Restricted
+- Metadata-only
+
+> 'Data available upon (reasonable) request'
+
+![GIPHY](https://media.giphy.com/media/8vyZouWSVhslwWA7Lp/giphy.gif)
+
+What exactly is a 'reasonable' request. How is it available? Who do I contact?
+In a recent study on data sharing, the most common reason for declining a
+request was found to be that,
+either the corresponding author had no time to look for the data, or the data were
+lost [@tedersooDataSharing2021]. Other obstacles include
+broken e-mails [@vinesAvailabilityResearch2014]. Often, institutional emails are
+used, but these are deactivated if a researcher leaves the institution.
+
+
+## Experiences
+
+Raw number of neutral experiences, (respondent that they had no negative experiences
+from sharing data): `r sum(paleoanth_responses$Q19 == "no", na.rm = T)`
+
+Raw number of negative experiences: `r sum(paleoanth_responses$Q19 == "yes", na.rm = T)`
+
+Raw number of benefits: `r sum(paleoanth_responses$Q18 != "other (write in)", na.rm = T)`
+
+Types of experiences
+
+```{r}
+#| label: exp-plot-setup
+experiences <- paleoanth_long |>
+  filter(question == "Q20" |
+         question == "Q18" |
+         question == "Q19") |>
+  separate_longer_delim(response, delim = ",") |>
+  remove_missing() |>
+  select(question, response)
+
+neg_count <- experiences |>
+  filter(question == "Q19") |>
+  count(response) |>
+  #group_by(response) |>
+  #rowwise() |>
+  mutate(percent = n / sum(n) * 100)
+
+# negative statements
+neg_experiences <- experiences |>
+  filter(question == "Q20") #|>
+#count(response) |>
+#arrange(desc(n))
+
+# positive experiences
+pos_experiences <- experiences |>
+  filter(question == "Q18") #|>
+#count(response) |>
+#arrange(desc(n))
+```
+
+> `r survey_questions$number[29]`: `r survey_questions$question[29]`
+
+```{r}
+#| label: fig-negative
+#| fig-cap: "Those who had a negative experience ('yes') with data sharing and those who did not ('no')."
+
+neg_count |>
+  ggplot(aes(x = "", y = n, fill = response)) +
+    geom_bar(stat = "identity") +
+    coord_polar(theta = "y") +
+    geom_text(aes(label = paste0(round(percent), "%", " (n = ", n, ")")), position = position_stack(vjust = 0.5)) +
+  theme_get() +
+  theme_void()
+```
+
+> `r survey_questions$number[39]`: `r survey_questions$question[39]`
+
+```{r}
+#| label: fig-career-benefit
+paleoanth_long |>
+  filter(question == "Q24") |>
+  count(response) |>
+  mutate(percent = n / sum(n) * 100) |>
+  remove_missing() |>
+  ggplot(aes(x = "", y = n, fill = response)) +
+    geom_bar(stat = "identity") +
+    coord_polar(theta = "y") +
+    geom_text(aes(label = paste0(round(percent), "%", " (n = ", n, ")")), position = position_stack(vjust = 0.5)) +
+    theme_get() +
+    theme_void()
+  
+```
+
+
+> `r survey_questions$number[27]`: `r survey_questions$question[27]`
+
+> `r survey_questions$number[30]`: `r survey_questions$question[30]`
+
+```{r}
+#| label: fig-experiences
+#| fig-width: 10
+
+exp_theme <- theme(
+  panel.grid.major.y = element_blank(),
+  axis.text.y = element_text(family = "Arial", size = 28),
+  axis.text.x = element_text(family = "Arial", size = 18)
+)
+
+pos_experiences_pl <- pos_experiences |>
+  filter(str_detect(response, "(write in)", negate = T)) |>
+  count(response) |>
+  mutate(response = str_wrap(response, width = 50)) |>
+  ggplot(aes(x = n, y = reorder(response, n))) +
+  geom_col(fill = "#21927f") + # change to nicer hex colour
+  scale_fill_viridis_d() +
+  #scale_x_continuous(limits = c(0,28), position = "top") +
+  scale_x_reverse(position = "top") +
+  theme_minimal() +
+  exp_theme +
+  labs(y = "", x = "")
+
+# combine some negative write ins to provide an additional value for y axis (symmetry)
+neg_experiences_pl <- neg_experiences |>
+  #filter(str_detect(response, "(write in)", negate = T)) |>
+  count(response) |>
+  mutate(response = str_wrap(response, width = 50)) |>
+  ggplot(aes(x = n, y = reorder(response, n))) + # change to nicer hex colour
+  geom_col(fill = "#922134") +
+  scale_y_discrete(position = "right") +
+  scale_x_continuous(limits = c(0,28), position = "top") +
+  theme_minimal() +
+  exp_theme +
+  labs(y = "", x = "")
+
+pos_experiences_pl + neg_experiences_pl
+
+ggsave("figures/poster_benefits-negatives.png", height = 18, width = 34, units = "in")
+```
+
+Overall there are more often positive experiences associated with data sharing
+than negative experiences. More people have never had a bad experience (@fig-negative).
+More people believe they will experience career benefits (@fig-career-benefit).
+And fewer people presented a bad experience from data sharing (@fig-experiences).
+
+### Why share?
+
+There are many reasons to share the data that benefit both the researcher and
+society. Additionally, the data and methodology are needed to validate a
+study.
+
+> An independent researcher was able to confirm and build upon results of my study because I shared the data.
+
+This is science working the way science was intended to work. This is also true
+when subsequent studies are unable to confirm preceding studies.
+
+> `r survey_questions$number[25]`: `r survey_questions$question[25]`
+
+```{r}
+#| label: tbl-why-share
+#| tbl-cap: "Why respondents chose to share their data. Multiple choices allowed."
+paleoanth_long |>
+  filter(question == "Q17") |>
+  separate_longer_delim(response, ",") |>
+  remove_missing() |>
+  count(response) |>
+  arrange(desc(n)) |>
+  knitr::kable()
+```
+
+
+### Why not share?
+
+> `r survey_questions$number[33]`: `r survey_questions$question[33]`
+
+```{r}
+paleoanth_long |>
+  filter(question == "Q21") |>
+  separate_longer_delim(response, ",") |>
+  mutate(response = str_trim(response)) |>
+  remove_missing() |>
+  count(response) |>
+  arrange(desc(n)) |>
+  knitr::kable()
+```
+
+> Data that I had shared was clearly taken and then published without mentioning its source
+>
+> survey response to Q43
+
+Problem: People used the data without acknowledging/citing me or other sources.  
+Solution: Published on a repository with a license.
+
+Problem: People mis-used and/or mis-represented my data.  
+Solution: Published on a repository with proper documentation.
+
+Problem: My research was scooped.  
+Solution: Published on a repository with a license and embargo (depending on the situation)
+
+Problem: My student's research was scooped.  
+Solution: See above.
+
+Problem: People criticized me for perceived errors.  
+Solution: The benefit of having many eyes on all aspects of your analysis is the
+increased ability to spot mistakes. It often feels uncomfortable in this situation,
+but as scientists we need to get over this feeling.
+
+Problem: Another stakeholder became angry with me.  
+Solution: Always be in continuous communication with stakeholders, and respect
+their wishes regarding research outputs.
+
+There are of course other ways of being 'scooped' where the FAIR principles
+may not help. This is part of a much-needed culture change in academia to
+incentivise collaboration over competition, quality of research outputs over
+quantity (putting an end to 'publish or perish'), and Knowledge accumulation built on
+rigorous, validated science rather than a flimsy Jenga tower of unreplicated and
+non-reproducible results.
+
+
+## Who shares?
+
+```{r}
+#| label: fig-pos-share
+#| fig-cap: "Position of researchers who share and don't share data."
+paleoanth_responses |>
+  remove_missing(vars = "Q14") |>
+  filter(Q3 != "other (write in)") |>
+  group_by(Q3,Q14) |>
+  count() |>
+  group_by(Q3) |>
+  mutate(proportion = (n / sum(n))) |>
+  ggplot(aes(x = Q3, y = proportion, fill = Q14)) +
+    geom_col() +
+    scale_y_continuous(labels = scales::percent_format()) +
+    labs(fill = "Has shared data") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1),
+          axis.title.x = element_blank())
+```
+
+
+
+
+## What needs to be done?
+
+```{r}
+na.omit(paleoanth_responses$Q43)
+```
+
