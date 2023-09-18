@@ -1,5 +1,9 @@
 ---
-title: Open data in Paleoanthropology
+title: "Data Sharing in Paleoanthropology"
+author: 
+  - Bjørn Peare Bartholdy
+  - Amanda G. Henry
+  - Femke H. Reidsma
 execute: 
   warning: false
   freeze: auto
@@ -10,7 +14,7 @@ format:
   html: 
     toc: true
     code-fold: true
-    keep-md: true
+    keep-md: false
 ---
 
 ```{r}
@@ -135,7 +139,8 @@ repos <- paleoanth_long |>
 
 ```{r}
 #| label: tbl-repo
-#| tbl-cap: "Answers to the question "Have you archived and/or shared data using an online repository before? (single choice)"
+#| tbl-cap: "Answers to the question 'Have you archived and/or shared data using an online repository before?' (single choice)"
+
 paleoanth_long |>
   filter(question == "Q14") |>
   count(response) |>
@@ -158,10 +163,10 @@ repos |>
 #repos_summ |>
   remove_missing() |>
   ggplot(aes(x = reorder(response, -n), y = n, fill = response)) +
-  geom_col() +
-  theme_minimal() +
-  theme_get() +
-  theme(legend.position = "none",
+    geom_col() +
+    theme_minimal() +
+    theme_get() +
+    theme(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
@@ -344,8 +349,8 @@ paleoanth_long |>
 
 exp_theme <- theme(
   panel.grid.major.y = element_blank(),
-  axis.text.y = element_text(family = "Arial", size = 28),
-  axis.text.x = element_text(family = "Arial", size = 18)
+  axis.text.y = element_text(family = "Roboto", size = 42, lineheight = 1.1),
+  axis.text.x = element_text(family = "Roboto", size = 24)
 )
 
 pos_experiences_pl <- pos_experiences |>
@@ -376,7 +381,7 @@ neg_experiences_pl <- neg_experiences |>
 
 pos_experiences_pl + neg_experiences_pl
 
-ggsave("figures/poster_benefits-negatives.png", height = 18, width = 34, units = "in")
+ggsave("figures/poster_benefits-negatives.png", height = 24, width = 48, units = "in")
 ```
 
 Overall there are more often positive experiences associated with data sharing
