@@ -57,7 +57,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="poster-analysis_files/libs/clipboard/clipboard.min.js"></script>
@@ -140,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-source" class="level2">
 <h2 class="anchored" data-anchor-id="data-source">Data source</h2>
-<p>The data used in this analysis was generated in another study by Mulligan and colleagues (2022) and made available under a CC0 license. It was downloaded directly from the public repository (DRYAD): https://doi.org/10.5061/dryad.5x69p8d40</p>
+<p>The data used in this analysis was generated in another study by Mulligan and colleagues <span class="citation" data-cites="mulliganDataSharing2022">(<a href="#ref-mulliganDataSharing2022" role="doc-biblioref">2022</a>)</span> and made available under a CC0 license. It was downloaded directly from the public repository (DRYAD): https://doi.org/10.5061/dryad.5x69p8d40</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -683,7 +702,7 @@ Tip
 <figcaption class="figure-caption">GIPHY</figcaption>
 </figure>
 </div>
-<p>What exactly is a ‘reasonable’ request. How is it available? Who do I contact? In a recent study on data sharing, the most common reason for declining a request was found to be that, either the corresponding author had no time to look for the data, or the data were lost <span class="citation" data-cites="tedersooDataSharing2021">[@tedersooDataSharing2021]</span>. Other obstacles include broken e-mails <span class="citation" data-cites="vinesAvailabilityResearch2014">[@vinesAvailabilityResearch2014]</span>. Often, institutional emails are used, but these are deactivated if a researcher leaves the institution.</p>
+<p>What exactly is a ‘reasonable’ request. How is it available? Who do I contact? In a recent study on data sharing, the most common reason for declining a request was found to be that, either the corresponding author had no time to look for the data, or the data were lost <span class="citation" data-cites="tedersooDataSharing2021">(<a href="#ref-tedersooDataSharing2021" role="doc-biblioref">Tedersoo et al., 2021</a>)</span>. Other obstacles include broken e-mails <span class="citation" data-cites="vinesAvailabilityResearch2014">(<a href="#ref-vinesAvailabilityResearch2014" role="doc-biblioref">Vines et al., 2014</a>)</span>. Often, institutional emails are used, but these are deactivated if a researcher leaves the institution.</p>
 </section>
 </section>
 <section id="experiences" class="level2">
@@ -1088,9 +1107,20 @@ attr(,"class")
 [1] "omit"</code></pre>
 </div>
 </div>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-mulliganDataSharing2022" class="csl-entry" role="listitem">
+Mulligan, C. J., Boyer, D. M., Turner, T. R., Delson, E., &amp; Leonard, W. R. (2022). Data sharing in biological anthropology. <em>American Journal of Biological Anthropology</em>, <em>178</em>(S74), 26–53. <a href="https://doi.org/10.1002/ajpa.24499">https://doi.org/10.1002/ajpa.24499</a>
+</div>
+<div id="ref-tedersooDataSharing2021" class="csl-entry" role="listitem">
+Tedersoo, L., Küngas, R., Oras, E., Köster, K., Eenmaa, H., Leijen, Ä., Pedaste, M., Raju, M., Astapova, A., Lukner, H., Kogermann, K., &amp; Sepp, T. (2021). Data sharing practices and data availability upon request differ across scientific disciplines. <em>Scientific Data</em>, <em>8</em>(1), 192. <a href="https://doi.org/10.1038/s41597-021-00981-0">https://doi.org/10.1038/s41597-021-00981-0</a>
+</div>
+<div id="ref-vinesAvailabilityResearch2014" class="csl-entry" role="listitem">
+Vines, T. H., Albert, A. Y. K., Andrew, R. L., Débarre, F., Bock, D. G., Franklin, M. T., Gilbert, K. J., Moore, J.-S., Renaut, S., &amp; Rennison, D. J. (2014). The <span>Availability</span> of <span>Research Data Declines Rapidly</span> with <span>Article Age</span>. <em>Current Biology</em>, <em>24</em>(1), 94–97. <a href="https://doi.org/10.1016/j.cub.2013.11.014">https://doi.org/10.1016/j.cub.2013.11.014</a>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
