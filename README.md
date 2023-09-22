@@ -1,6 +1,8 @@
 # FAIR Sharing is Caring
 
-Poster presented at [ESHE 2023](https://eshe.eu/meetings/).
+<img src='/img/FAIR-poster.png' alt='Poster about FAIR data presented at ESHE 2023' style='width: 50%'>
+
+[ESHE 2023](https://eshe.eu/meetings/)
 
 Contents:
 
